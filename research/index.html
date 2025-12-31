@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Research — Haitao Xu</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      margin: 40px;
+      line-height: 1.6;
+      background: #fafafa;
+    }
+    header h1 {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 2.2rem;
+      margin-bottom: 0.2rem;
+    }
+    header p {
+      margin-top: 0;
+      color: #555;
+    }
+    nav {
+      padding: 15px;
+      background: #f5f5f5;
+      margin-bottom: 30px;
+      border-radius: 6px;
+    }
+    nav a {
+      margin-right: 10px;
+      text-decoration: none;
+      color: #0050a4;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .tagline {
+      font-style: italic;
+      color: #444;
+      margin-bottom: 25px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-bottom: 40px;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 18px 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .card h2 {
+      font-size: 1.2rem;
+      margin-top: 0;
+      margin-bottom: 0.4rem;
+      font-family: "Georgia", "Times New Roman", serif;
+    }
+    .card p {
+      margin: 0.2rem 0 0.4rem 0;
+      color: #555;
+    }
+    .card ul {
+      margin: 0.3rem 0 0 1.1rem;
+      padding: 0;
+      font-size: 0.92rem;
+      color: #555;
+    }
+    .card a {
+      color: #0050a4;
+      text-decoration: none;
+    }
+    .card a:hover {
+      text-decoration: underline;
+    }
+    h2.section-title {
+      font-size: 1.4rem;
+      margin-top: 40px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 6px;
+      font-family: "Georgia", "Times New Roman", serif;
+    }
+    .note {
+      font-size: 0.9rem;
+      color: #777;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation (same as home, but with relative paths from /research/) -->
+  <nav>
+    <a href="/index.html">Home</a> |
+    <a href="/research/index.html"><strong>Research</strong></a> |
+    <a href="/engineering/index.html">Engineering Notes</a> |
+    <a href="/poetry/index.html">Poetry</a> |
+    <a href="/writing/index.html">Writing</a> |
+    <a href="/about/index.html">About</a>
+  </nav>
+
+  <header>
+    <h1>Research</h1>
+    <p class="tagline">
+      Tire mechanics, multi-physics FEA, and operator-based modeling,
+      with an emphasis on structural stiffness and thermodynamics.
+    </p>
+  </header>
+
+  <section class="grid">
+    <div class="card">
+      <h2>Tire Mechanics & Rolling Resistance</h2>
+      <p>
+        Structural design of OTR and passenger tires under realistic duty cycles:
+        inflation–deflection, rolling resistance, and durability.
+      </p>
+      <ul>
+        <li><a href="#">OTR tire loading–failure–structure workflow (PDF coming)</a></li>
+        <li><a href="#">Rolling resistance from static deflection models (PDF)</a></li>
+        <li><a href="#">Crown and shoulder stiffness architecture notes</a></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Nonlinear FEA Framework</h2>
+      <p>
+        A modular FEA framework for large deformation elastomers, contact,
+        and multi-level solvers, built around the Augmented Lagrange method.
+      </p>
+      <ul>
+        <li><a href="#">Updated Lagrangian solver notes</a></li>
+        <li><a href="#">Matrix-free NCG and model-problem strategy</a></li>
+        <li><a href="#">Material & contact control via ALM</a></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Operator-Theoretic Modeling (Rᵀ–L–S)</h2>
+      <p>
+        An operator-based language for PDE modeling and solver design:
+        restriction, laws, and solvers as a unified structure.
+      </p>
+      <ul>
+        <li><a href="#">Rᵀ–L–S framework overview</a></li>
+        <li><a href="#">Solver admissibility and preconditioning notes</a></li>
+        <li><a href="#">Contact and damage as constrained operators</a></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Thermo-Mechanical & Viscoelasticity</h2>
+      <p>
+        Energy-based models for hysteresis, temperature fields, and
+        entropy generation in rolling tires.
+      </p>
+      <ul>
+        <li><a href="#">KBKZ-based viscoelastic dissipation notes</a></li>
+        <li><a href="#">Thermo-mechanical tire temperature loops</a></li>
+        <li><a href="#">Entropy generation as a design indicator</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <h2 class="section-title">Papers & PDFs</h2>
+  <p>
+    This section will gradually collect formal papers, internal whitepapers,
+    and technical notes. Files will be grouped by topic with short summaries.
+  </p>
+
+  <ul>
+    <li><strong>Coming soon:</strong> a curated list of downloadable PDFs.</li>
+    <li>Once uploaded, links will point to files under <code>/research/papers/</code>.</li>
+  </ul>
+
+  <p class="note">
+    Note: This site is a work in progress. Earlier drafts and working notes may be
+    reorganized as the research program evolves.
+  </p>
+
+</body>
+</html>
