@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>PETSc & Nonlinear Solvers — Haitao Xu</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin: 40px;
+      line-height: 1.6;
+      background: #fafafa;
+    }
+    nav {
+      padding: 15px;
+      background: #f5f5f5;
+      margin-bottom: 30px;
+      border-radius: 6px;
+    }
+    nav a {
+      margin-right: 10px;
+      text-decoration: none;
+      color: #0050a4;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    h1, h2 {
+      font-family: "Georgia", serif;
+    }
+    h1 {
+      font-size: 2.1rem;
+      margin-bottom: 0.4rem;
+    }
+    code {
+      background: #eee;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+    .note {
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="/index.html">Home</a> |
+    <a href="/research/index.html">Research</a> |
+    <a href="/engineering/index.html"><strong>Engineering Notes</strong></a> |
+    <a href="/poetry/index.html">Poetry</a> |
+    <a href="/writing/index.html">Writing</a> |
+    <a href="/about/index.html">About</a>
+  </nav>
+
+  <h1>PETSc & Nonlinear Solvers</h1>
+  <p class="note">
+    Notes on using PETSc for matrix-free nonlinear conjugate gradient methods,
+    preconditioning, and multi-level strategies in large-deformation FEA.
+  </p>
+
+  <h2>1. Matrix-Free NCG</h2>
+  <p>
+    For large elastomer problems, forming the full tangent matrix can be expensive.
+    Matrix-free NCG uses only residual evaluations and approximate directional derivatives
+    while still capturing the structure of the PDE.
+  </p>
+  <ul>
+    <li>Concept of a <em>model problem</em> with fixed contact and controlled stiffness</li>
+    <li>Residual-only Krylov / CG-like methods</li>
+    <li>Trade-offs between robustness and memory footprint</li>
+  </ul>
+
+  <h2>2. Preconditioning as Structural Shaping</h2>
+  <p>
+    In the Rᵀ–L–S language, preconditioning can be seen as reshaping how the solver
+    interrogates the operator. Practical PETSc topics:
+  </p>
+  <ul>
+    <li>Left vs right preconditioning and their structural implications</li>
+    <li>Using block preconditioners for coupled thermo-mechanical systems</li>
+    <li>Embedding multi-grid as a structured preconditioner</li>
+  </ul>
+
+  <h2>3. Multi-Level ALM-Based Framework</h2>
+  <p>
+    Multi-level solvers with Augmented Lagrange control of material, contact, or failure
+    constraints can be implemented in PETSc with:
+  </p>
+  <ul>
+    <li>Level-0: NCG on a model problem (fixed contact, scaled stiffness)</li>
+    <li>Higher levels: update multipliers and penalties, refresh constraints</li>
+    <li>Monitoring constraint violation and convergence structurally</li>
+  </ul>
+
+  <h2>4. Example Snippets (coming)</h2>
+  <p>
+    Future content here will include:
+  </p>
+  <ul>
+    <li><a href="#">PETSc NCG driver skeleton (code / PDF)</a></li>
+    <li><a href="#">Matrix-free residual callback examples</a></li>
+    <li><a href="#">Prototype ALM multi-level solver outline</a></li>
+  </ul>
+
+  <p class="note">
+    Implementation details may live in separate code repositories; this page
+    will remain the conceptual and documentation index.
+  </p>
+
+</body>
+</html>
