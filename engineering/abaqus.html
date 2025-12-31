@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Abaqus Scripts & Automation — Haitao Xu</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin: 40px;
+      line-height: 1.6;
+      background: #fafafa;
+    }
+    nav {
+      padding: 15px;
+      background: #f5f5f5;
+      margin-bottom: 30px;
+      border-radius: 6px;
+    }
+    nav a {
+      margin-right: 10px;
+      text-decoration: none;
+      color: #0050a4;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    h1 {
+      font-family: "Georgia", serif;
+      font-size: 2.1rem;
+      margin-bottom: 0.4rem;
+    }
+    h2 {
+      font-family: "Georgia", serif;
+      margin-top: 1.8rem;
+    }
+    code {
+      background: #eee;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+    .note {
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="/index.html">Home</a> |
+    <a href="/research/index.html">Research</a> |
+    <a href="/engineering/index.html"><strong>Engineering Notes</strong></a> |
+    <a href="/poetry/index.html">Poetry</a> |
+    <a href="/writing/index.html">Writing</a> |
+    <a href="/about/index.html">About</a>
+  </nav>
+
+  <h1>Abaqus Scripts & Automation</h1>
+  <p class="note">
+    Python scripts, templates, and workflows used to drive Abaqus CAE and Abaqus/Standard
+    for tire modeling, rolling simulations, and thermo-mechanical loops.
+  </p>
+
+  <h2>1. CAE Model Building</h2>
+  <p>
+    Scripts that create parametric tire models, belts, plies, and boundary conditions directly
+    in Abaqus CAE. Typical tasks:
+  </p>
+  <ul>
+    <li>Building simplified tire cross-sections for inflation–deflection studies</li>
+    <li>Defining belt layers and rebar using CAE scripting</li>
+    <li>Applying loads, constraints, and material assignments in a reproducible way</li>
+  </ul>
+
+  <h2>2. ODB Post-processing</h2>
+  <p>
+    Extracting fields from ODB files without manual clicking in the GUI:
+  </p>
+  <ul>
+    <li>Nodal displacements and reaction forces along rings or sections</li>
+    <li>Deformation gradients at element centroids for dissipation calculations</li>
+    <li>Temperature and stress histories along material paths</li>
+  </ul>
+
+  <h2>3. Rolling–Temperature Loop Automation</h2>
+  <p>
+    Automating coupled structural–thermal loops for rolling tires. Typical workflow:
+  </p>
+  <ol>
+    <li>Run structural (static or quasi-static) analysis to obtain deflections and dissipation</li>
+    <li>Map dissipation to a temperature model (2D or 3D)</li>
+    <li>Update material properties based on temperature, re-run, iterate to convergence</li>
+  </ol>
+
+  <p>
+    These loops are driven by Python scripts that orchestrate multiple Abaqus jobs and
+    post-process intermediate ODBs.
+  </p>
+
+  <h2>4. Script Library (coming)</h2>
+  <p>
+    Downloadable scripts will be collected here once curated:
+  </p>
+  <ul>
+    <li><a href="#">Inflation–deflection CAE builder (script, PDF notes)</a></li>
+    <li><a href="#">ODB extraction template for deformation gradients</a></li>
+    <li><a href="#">Rolling temperature loop controller</a></li>
+  </ul>
+
+  <p class="note">
+    Files will live under <code>/engineering/abaqus/</code> or a separate code repository;
+    this page serves as the high-level index with documentation.
+  </p>
+
+</body>
+</html>
