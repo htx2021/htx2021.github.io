@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Engineering Notes — Haitao Xu</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin: 40px;
+      line-height: 1.6;
+      background: #fafafa;
+    }
+    nav {
+      padding: 15px;
+      background: #f5f5f5;
+      margin-bottom: 30px;
+      border-radius: 6px;
+    }
+    nav a {
+      margin-right: 10px;
+      text-decoration: none;
+      color: #0050a4;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    header h1 {
+      font-family: "Georgia", serif;
+      font-size: 2.2rem;
+      margin-bottom: 0.2rem;
+    }
+    header p {
+      margin-top: 0;
+      color: #555;
+      font-style: italic;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-bottom: 40px;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 18px 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .card h2 {
+      font-size: 1.2rem;
+      margin-top: 0;
+      margin-bottom: 0.4rem;
+      font-family: "Georgia", serif;
+    }
+    .card p {
+      margin: 0.2rem 0 0.4rem 0;
+      color: #555;
+    }
+    .card ul {
+      margin: 0.3rem 0 0 1.1rem;
+      padding: 0;
+      font-size: 0.92rem;
+      color: #555;
+    }
+    .card a {
+      color: #0050a4;
+      text-decoration: none;
+    }
+    .card a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="/index.html">Home</a> |
+    <a href="/research/index.html">Research</a> |
+    <a href="/engineering/index.html"><strong>Engineering Notes</strong></a> |
+    <a href="/poetry/index.html">Poetry</a> |
+    <a href="/writing/index.html">Writing</a> |
+    <a href="/about/index.html">About</a>
+  </nav>
+
+  <header>
+    <h1>Engineering Notes</h1>
+    <p>Scripts, tooling workflows, numerical methods, modeling insights, and solver implementation notes.</p>
+  </header>
+
+  <section class="grid">
+
+    <!-- CUBIT -->
+    <div class="card">
+      <h2>CUBIT & Mesh Generation</h2>
+      <p>Notes and workflows from years of building hex meshes for tire models.</p>
+      <ul>
+        <li><a href="#">STL-to-hex workflows</a></li>
+        <li><a href="#">Cubit Python scripting</a></li>
+        <li><a href="#">Element blocks, IDs, & selection logic</a></li>
+      </ul>
+    </div>
+
+    <!-- Abaqus -->
+    <div class="card">
+      <h2>Abaqus Scripts & Automation</h2>
+      <p>Python snippets and templates for inflations, LQSR, temperature loops, and post-processing.</p>
+      <ul>
+        <li><a href="#">Abaqus CAE scripting foundations</a></li>
+        <li><a href="#">ODB extraction for deformation gradients</a></li>
+        <li><a href="#">Rolling temperature loop automation</a></li>
+      </ul>
+    </div>
+
+    <!-- PETSc -->
+    <div class="card">
+      <h2>PETSc & Nonlinear Solvers</h2>
+      <p>NCG, preconditioning, and matrix-free methods for elastomer models.</p>
+      <ul>
+        <li><a href="#">Matrix-free NCG examples</a></li>
+        <li><a href="#">Preconditioning strategies</a></li>
+        <li><a href="#">Monitoring solver invariance</a></li>
+      </ul>
+    </div>
+
+    <!-- Numerical methods -->
+    <div class="card">
+      <h2>Numerical Methods & Discretization</h2>
+      <p>From basic FE operators to multi-level restriction schemes.</p>
+      <ul>
+        <li><a href="#">Updated Lagrangian notes</a></li>
+        <li><a href="#">Operator restriction Rᵀ & prolongation</a></li>
+        <li><a href="#">Contact & constraint discretization</a></li>
+      </ul>
+    </div>
+
+  </section>
+
+  <h2 style="font-family: Georgia, serif;">Downloads</h2>
+  <p>
+    PDFs and working notes will appear in this section as they are uploaded.
+    Engineering files are usually located under <code>/engineering/notes/</code>.
+  </p>
+
+</body>
+</html>
