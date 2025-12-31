@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Numerical Methods & Discretization — Haitao Xu</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin: 40px;
+      line-height: 1.6;
+      background: #fafafa;
+    }
+    nav {
+      padding: 15px;
+      background: #f5f5f5;
+      margin-bottom: 30px;
+      border-radius: 6px;
+    }
+    nav a {
+      margin-right: 10px;
+      text-decoration: none;
+      color: #0050a4;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    h1, h2 {
+      font-family: "Georgia", serif;
+    }
+    h1 {
+      font-size: 2.1rem;
+      margin-bottom: 0.4rem;
+    }
+    code {
+      background: #eee;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+    .note {
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="/index.html">Home</a> |
+    <a href="/research/index.html">Research</a> |
+    <a href="/engineering/index.html"><strong>Engineering Notes</strong></a> |
+    <a href="/poetry/index.html">Poetry</a> |
+    <a href="/writing/index.html">Writing</a> |
+    <a href="/about/index.html">About</a>
+  </nav>
+
+  <h1>Numerical Methods & Discretization</h1>
+  <p class="note">
+    Finite element formulations, update schemes, and multi-level operators underlying
+    the solver implementations used in practice.
+  </p>
+
+  <h2>1. Updated Lagrangian vs Total Lagrangian</h2>
+  <p>
+    Notes comparing ULF and TLF for large deformation elastomers:
+  </p>
+  <ul>
+    <li>Choice of configuration for evaluating <code>F</code>, stresses, and tangents</li>
+    <li>Implications for stability and accuracy in tire simulations</li>
+    <li>How this choice interacts with constitutive models and ALM constraints</li>
+  </ul>
+
+  <h2>2. Contact & Constraint Discretization</h2>
+  <p>
+    Discretizing contact and other constraints in a way that matches solver structure:
+  </p>
+  <ul>
+    <li>Penalty vs Lagrange multiplier vs Augmented Lagrange in FE contact</li>
+    <li>Defining and updating constraint violations structurally</li>
+    <li>“Model problem” contact: fixed contact sets within inner solves</li>
+  </ul>
+
+  <h2>3. Multi-Level Operators</h2>
+  <p>
+    Restriction and prolongation viewed through the Rᵀ–L–S framework:
+  </p>
+  <ul>
+    <li>Restriction operators that preserve physical structure</li>
+    <li>Prolongation consistent with energy and stiffness</li>
+    <li>When multi-grid is admissible—and when contact/damage breaks smoothness</li>
+  </ul>
+
+  <h2>4. Worked Examples (coming)</h2>
+  <p>
+    Future notes may include:
+  </p>
+  <ul>
+    <li><a href="#">1D bar with ALM boundary constraints</a></li>
+    <li><a href="#">Structural stiffness <code>C_eff</code> and <code>G_eff</code> examples</a></li>
+    <li><a href="#">Toy multi-level contact problem illustrating “model problems”</a></li>
+  </ul>
+
+  <p class="note">
+    These notes are intended as a bridge between textbook formulations and
+    the actual structural and thermodynamic questions that drive tire design.
+  </p>
+
+</body>
+</html>
