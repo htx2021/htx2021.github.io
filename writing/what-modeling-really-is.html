@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>What Modeling Really Is (and Isn’t) — Haitao Xu</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+      margin: 40px;
+      line-height: 1.8;
+      background: #fafafa;
+      color: #222;
+    }
+    nav {
+      padding: 15px;
+      background: #f5f5f5;
+      margin-bottom: 30px;
+      border-radius: 6px;
+    }
+    nav a {
+      margin-right: 10px;
+      color: #0050a4;
+      text-decoration: none;
+    }
+    nav a:hover { text-decoration: underline; }
+    main {
+      max-width: 840px;
+    }
+    h1, h2, h3 {
+      font-family: "Georgia", serif;
+    }
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.3rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 2.2rem;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 0.3rem;
+    }
+    h3 {
+      font-size: 1.15rem;
+      margin-top: 1.8rem;
+    }
+    .subtitle {
+      font-style: italic;
+      color: #555;
+      margin-bottom: 1.2rem;
+    }
+    .meta {
+      font-size: 0.9rem;
+      color: #777;
+      margin-bottom: 1.5rem;
+    }
+    .callout {
+      border-left: 4px solid #0050a4;
+      background: #f0f4fb;
+      padding: 10px 14px;
+      margin: 1.4rem 0;
+      font-size: 0.95rem;
+    }
+    code {
+      background: #eee;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+    em {
+      font-style: italic;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="/index.html">Home</a> |
+    <a href="/research/index.html">Research</a> |
+    <a href="/engineering/index.html">Engineering Notes</a> |
+    <a href="/poetry/index.html">Poetry</a> |
+    <a href="/writing/index.html"><strong>Writing</strong></a> |
+    <a href="/about/index.html">About</a>
+  </nav>
+
+  <main>
+    <h1>What Modeling Really Is (and Isn’t)</h1>
+    <p class="subtitle">
+      Choosing states, laws, and solvers — and knowing where the map ends.
+    </p>
+    <p class="meta">
+      By Haitao Xu · Draft for web.
+    </p>
+
+    <div class="callout">
+      Modeling is not about drawing a complicated diagram or running a large
+      simulation. It is about making disciplined choices: what information to
+      keep, what to ignore, which laws to enforce, and how the resulting
+      structure is allowed to fail. Everything else is decoration.
+    </div>
+
+    <h2>1. Models Are Not Miniature Realities</h2>
+    <p>
+      We sometimes slip into talking as if a “good model” is a small copy of
+      the real world. Add enough terms, enough parameters, enough detail, and
+      the model becomes “realistic”. This is comforting — and wrong.
+    </p>
+    <p>
+      A model is not a shrunken universe. It is a carefully constructed
+      <em>machine for answering a particular class of questions</em>. Outside
+      that question class, it is allowed to be blind, wrong, or silent. In
+      fact, it <em>must</em> be; otherwise we have not really made a model,
+      only a vague wish for omniscience.
+    </p>
+    <p>
+      The first responsibility of a modeler is therefore not to capture
+      everything, but to decide:
+    </p>
+    <ul>
+      <li><strong>Which states</strong> are necessary and sufficient to describe the problem,</li>
+      <li><strong>Which laws</strong> those states must obey, and</li>
+      <li><strong>What kind of solver</strong> we will accept as an answer mechanism.</li>
+    </ul>
+
+    <h2>2. Modeling as State Choice</h2>
+    <p>
+      In the Rᵀ–L–S language, the first move is always a choice of
+      <em>state</em>. For a mechanical system, we might choose positions and
+      velocities; for a tire, we might choose deformation gradients, internal
+      variables for viscoelasticity, and temperature.
+    </p>
+    <p>
+      This choice is never neutral. It already contains a worldview:
+    </p>
+    <ul>
+      <li>
+        If we ignore temperature, we are saying: “For the questions I care
+        about, temperature does not matter.”
+      </li>
+      <li>
+        If we smear cord behavior into an effective isotropic stiffness, we
+        are saying: “I do not need to know what happens between cords,
+        only how the laminate behaves as a whole.”
+      </li>
+      <li>
+        If we keep only steady-state rolling and discard transients, we are
+        saying: “I will not ask this model about startup and shutdown.”
+      </li>
+    </ul>
+    <p>
+      Good modeling begins by making these statements explicit instead of
+      pretending that “the model” is just there, pre-packaged. Every state
+      choice is a cut through reality; clarity about the cut is more
+      important than elegance of the equations that follow.
+    </p>
+
+    <h2>3. Laws vs. Fitting</h2>
+    <p>
+      Once states are chosen, we introduce <em>laws</em>: balance of
+      momentum, constitutive relations, energy inequalities, evolution
+      equations. This is the <code>L</code> layer in the Rᵀ–L–S picture.
+    </p>
+    <p>
+      At this point, it is tempting to mix two very different activities:
+    </p>
+    <ul>
+      <li>
+        Writing down <strong>structure-preserving laws</strong> that express
+        symmetry, conservation, and thermodynamic admissibility.
+      </li>
+      <li>
+        Fitting <strong>flexible function approximators</strong> (neural
+        networks, polynomials, splines) to data within that structure.
+      </li>
+    </ul>
+    <p>
+      The first activity is modeling; the second is parameter estimation or
+      system identification. Both are necessary, but they are not the same.
+    </p>
+    <p>
+      When we forget this distinction, we start to expect that a
+      good-enough fit is automatically a good model. It isn’t. A model must
+      decide what is allowed and what is impossible before any data arrives.
+      Data then tells us <em>where</em> we are in that admissible space,
+      not what the space itself should have been.
+    </p>
+
+    <h2>4. Solvers Are Not Oracles</h2>
+    <p>
+      With states and laws in place, we still need a way to obtain answers.
+      That is the <code>S</code> layer: numerical solvers, optimization
+      routines, time steppers, neural operators, and so on.
+    </p>
+    <p>
+      It is tempting to treat solvers as oracles: press “Run”, wait, and
+      accept whatever comes out. But solvers are just algorithms with
+      failure modes. A model is only meaningful if the solver’s behavior is
+      structurally compatible with the laws and states we chose.
+    </p>
+    <p>
+      Some examples:
+    </p>
+    <ul>
+      <li>
+        A time integrator that does not respect energy or dissipation
+        constraints may converge numerically while violating thermodynamics.
+      </li>
+      <li>
+        A contact algorithm that permits interpenetration at the discrete
+        level is modeling a different physical system, whether we admit it
+        or not.
+      </li>
+      <li>
+        A neural network that fits boundary data but does not enforce
+        internal balance laws is not solving a PDE; it is interpolating
+        measurements.
+      </li>
+    </ul>
+    <p>
+      A responsible modeler asks not only “Did it converge?” but also
+      “Is this class of solver admissible for the laws I claimed to enforce?”
+    </p>
+
+    <h2>5. What Modeling Is Not</h2>
+    <p>
+      Against this background, it becomes easier to say what modeling
+      <em>isn’t</em>:
+    </p>
+    <ul>
+      <li>
+        It is not dumping all available variables into a black-box fitter and
+        hoping generalization will happen by magic.
+      </li>
+      <li>
+        It is not decorating a report with colorful contour plots after the
+        core design decisions are already locked in.
+      </li>
+      <li>
+        It is not hiding arbitrary assumptions in default settings and
+        calibration spreadsheets.
+      </li>
+      <li>
+        It is not a competition to see who can run the largest or most complex model.
+      </li>
+    </ul>
+    <p>
+      All of these can appear in competent engineering projects, but none of
+      them define modeling. They are, at best, side effects.
+    </p>
+
+    <h2>6. Modeling as Structured Forgetting</h2>
+    <p>
+      A more honest description is that modeling is a disciplined form of
+      <em>forgetting</em>.
+    </p>
+    <p>
+      We forget microscopic details when we use continuum mechanics. We
+      forget acoustic waves when we study quasi-static deformation. We
+      forget every loading scenario except those that matter for the design
+      question at hand.
+    </p>
+    <p>
+      The art lies in forgetting the right things for the right reasons:
+    </p>
+    <ul>
+      <li>State choices that match the scale and questions of interest,</li>
+      <li>Laws that encode the non-negotiable parts of physics,</li>
+      <li>Solvers that fail loudly when we step outside the model’s domain.</li>
+    </ul>
+    <p>
+      When done well, this kind of selective forgetting makes problems
+      clearer, not fuzzier. It allows us to see structure we would otherwise
+      miss: stiffness architectures, admissible operating envelopes, and
+      the relationship between geometry, material, and performance.
+    </p>
+
+    <h2>7. A Simple Checklist</h2>
+    <p>
+      In practice, a working model can be tested against a few simple
+      questions:
+    </p>
+    <ol>
+      <li>
+        <strong>States:</strong> Can I write down, in one paragraph, what is
+        included in the state and what is deliberately omitted?
+      </li>
+      <li>
+        <strong>Laws:</strong> Do I know which equations express physics
+        (balance, thermodynamics) and which are empirical closures?
+      </li>
+      <li>
+        <strong>Solvers:</strong> Do I know what kind of failure should
+        happen when the model is used outside its domain?
+      </li>
+      <li>
+        <strong>Questions:</strong> Can I list the questions this model is
+        allowed to answer — and those it is not?
+      </li>
+    </ol>
+    <p>
+      If the answer to these is “yes”, we are modeling. If not, we are
+      probably just computing.
+    </p>
+
+    <h2>8. Closing Thoughts</h2>
+    <p>
+      What modeling really is, in the end, is a way of thinking. Equations,
+      simulations, and data are important, but they sit downstream of a few
+      structural decisions about state, law, and solver.
+    </p>
+    <p>
+      Remembering this does not make the work easier. It does, however,
+      make it more honest. It turns models from collections of tricks into
+      explicit, examinable structures — structures that can be tested,
+      improved, and, when necessary, replaced.
+    </p>
+    <p>
+      That is the real power of modeling: not to mimic reality, but to
+      expose, in a controlled and limited way, the parts of reality that
+      matter for the decisions we face.
+    </p>
+
+  </main>
+</body>
+</html>
