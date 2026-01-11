@@ -252,6 +252,163 @@
         Excessive focus on this level often signals missing structure at higher levels.
       </p>
 
+      <h2>3A. Relationship Between Constitutive Structure and Material Class Structure</h2>
+      
+      <p>
+      Levels III and IV occupy a critical junction in the modeling hierarchy and are frequently
+      conflated in practice. While adjacent, they serve fundamentally different roles.
+      Understanding their relationship is essential for robust constitutive modeling.
+      </p>
+      
+      <p>
+      In brief:
+      </p>
+      
+      <blockquote>
+        Level III defines what forms of material response are admissible in principle;
+        Level IV determines which of those admissible responses actually dominate
+        for a given class of materials and loading regimes.
+      </blockquote>
+      
+      <p>
+      The relationship between the two is one of <em>restriction</em>, not equivalence.
+      </p>
+      
+      <h3>Level III: Constitutive Structure as Admissibility</h3>
+      
+      <p>
+      Level III addresses the question:
+      </p>
+      
+      <blockquote>
+        What kinds of material response are allowed by physical law,
+        independent of material identity?
+      </blockquote>
+      
+      <p>
+      At this level, constitutive modeling is governed by universal constraints:
+      </p>
+      
+      <ul>
+        <li>Frame indifference and objectivity</li>
+        <li>Material symmetry</li>
+        <li>Existence of a free-energy potential</li>
+        <li>Separation of energy storage and dissipation</li>
+        <li>Thermodynamic admissibility</li>
+      </ul>
+      
+      <p>
+      These constraints do not select a specific material behavior.
+      Instead, they define a space of <em>admissible constitutive families</em>,
+      such as hyperelasticity, viscoelasticity, plasticity, damage, or active response.
+      </p>
+      
+      <p>
+      At Level III, materials are not yet classified as rubber, metal, or granular matter.
+      Only structural possibility is determined.
+      </p>
+      
+      <h3>Level IV: Material Class Structure as Mechanism Dominance</h3>
+      
+      <p>
+      Level IV answers a different question:
+      </p>
+      
+      <blockquote>
+        Among all admissible constitutive families, which mechanisms
+        actually dominate for this class of materials?
+      </blockquote>
+      
+      <p>
+      Here, physics becomes selective rather than universal.
+      Dominance is determined by material organization, characteristic time scales,
+      energy barriers, and typical loading paths.
+      </p>
+      
+      <p>
+      Examples include:
+      </p>
+      
+      <ul>
+        <li>Elastomers: entropy-dominated elasticity, large reversible strains,
+            near-incompressibility, weak energetic stiffness</li>
+        <li>Metals: small elastic strains, yield-dominated plastic flow,
+            strong path dependence</li>
+        <li>Granular media: rearrangement-driven dissipation and localization</li>
+        <li>Fiber composites: anisotropic load transfer and directional stiffness</li>
+      </ul>
+      
+      <p>
+      Level IV does not introduce new admissibility conditions.
+      It selects and hierarchically orders mechanisms already allowed by Level III.
+      </p>
+      
+      <h3>The Funnel Relationship</h3>
+      
+      <p>
+      The relationship between Levels III and IV may be viewed as a funnel:
+      </p>
+      
+      <blockquote>
+        Admissible constitutive structures (Level III)
+        &rarr; Dominant mechanism classes (Level IV)
+        &rarr; Parameterized material behavior (Level V)
+      </blockquote>
+      
+      <p>
+      Level III defines the space of possible responses.
+      Level IV restricts this space to those mechanisms that matter in practice.
+      </p>
+      
+      <h3>Why the Separation Matters</h3>
+      
+      <p>
+      Many modeling failures arise from collapsing these two levels.
+      Two common errors are particularly instructive.
+      </p>
+      
+      <p>
+      First, material-specific assumptions are sometimes embedded into Level III,
+      for example by hard-coding yield behavior or incompressibility into the
+      constitutive admissibility itself. This compromises generality and transferability.
+      </p>
+      
+      <p>
+      Second, Level IV decisions are often treated as mere parameter choices.
+      In such cases, parameters are forced to compensate for incorrect mechanism selection,
+      leading to overfitting, numerical fragility, and poor extrapolation.
+      </p>
+      
+      <p>
+      A clean modeling principle follows:
+      </p>
+      
+      <blockquote>
+        Constitutive structure defines admissibility;
+        material class structure defines dominance.
+      </blockquote>
+      
+      <p>
+      These roles must remain distinct.
+      </p>
+      
+      <h3>Implications for Modeling Practice</h3>
+      
+      <p>
+      A robust modeling workflow therefore proceeds in three steps:
+      </p>
+      
+      <ul>
+        <li>Enforce admissibility through Level III structure</li>
+        <li>Select dominant mechanisms through Level IV classification</li>
+        <li>Tune parameters within the selected class at Level V</li>
+      </ul>
+      
+      <p>
+      Skipping or conflating these steps is the primary source of brittle,
+      overfitted, and non-transferable constitutive models.
+      </p>
+      
       <h2>4. Why Simplification Preserves Predictive Power</h2>
       <p>
         Simplification does not destroy predictability because lower-level detail is slaved to higher-level structure.
