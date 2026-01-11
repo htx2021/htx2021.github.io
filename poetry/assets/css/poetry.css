@@ -16,7 +16,7 @@
     .nav a:hover { border-bottom-color: rgba(0,0,0,0.6); }
 
     .card {
-      max-width: 70ch;
+      max-width: 80ch;
       background: #ffffff;
       padding: 28px 32px;
       border-radius: 14px;
