@@ -408,6 +408,91 @@
       Skipping or conflating these steps is the primary source of brittle,
       overfitted, and non-transferable constitutive models.
       </p>
+
+      <h2>3B. Relationship Between Field Structure and Constitutive Structure</h2>
+
+      <p>
+      If Section 3A addresses how admissible responses are selectively activated by material class, 
+      this section addresses how admissibility itself is bounded by field-level structure.
+      </p>
+
+      <h2>3B. Relationship Between Field Structure and Constitutive Structure</h2>
+
+      <p>
+      Levels II and III are closely coupled but play asymmetric roles in the modeling hierarchy.
+      Confusion between them often leads to ill-posed models or misplaced constitutive complexity.
+      Their relationship must therefore be stated with care.
+      </p>
+      
+      <blockquote>
+        Level II defines the admissible field structure of a problem;
+        Level III provides constitutive closure within that structure.
+      </blockquote>
+      
+      <h3>Level II as Structural Constraint</h3>
+      
+      <p>
+      Level II establishes the organizational framework in which physical processes evolve.
+      It consists of balance laws, locality, causality, and the mathematical character of the governing
+      equations (elliptic, hyperbolic, or parabolic).
+      </p>
+      
+      <p>
+      This structure exists prior to any material specification and is shared across wide classes
+      of physical systems. It determines well-posedness, stability, and numerical admissibility.
+      </p>
+      
+      <p>
+      Crucially, constitutive models must respect Level II structure.
+      They may not violate balance laws, alter conjugate variables, or destroy the underlying
+      field character without rendering the problem ill-posed.
+      </p>
+      
+      <h3>Level III as Closure, Not Governor</h3>
+      
+      <p>
+      Level III supplies constitutive relations that close the Level II field equations.
+      These relations define how stress, fluxes, and internal variables respond to the state of the field,
+      subject to admissibility constraints such as objectivity, energy consistency, and thermodynamic law.
+      </p>
+      
+      <p>
+      Constitutive structure therefore fills in material-specific response while remaining subordinate
+      to the field structure. It cannot redefine conservation laws or the fundamental organization
+      of space–time interaction.
+      </p>
+      
+      <h3>Downward Constraint and Upward Modulation</h3>
+      
+      <p>
+      The interaction between the two levels is asymmetric.
+      </p>
+      
+      <ul>
+        <li>Level II constrains what constitutive closures are admissible.</li>
+        <li>Level III may modulate which regimes of the Level II structure are realized.</li>
+      </ul>
+      
+      <p>
+      For example, constitutive nonlinearity or softening may activate localization or loss of ellipticity,
+      but these phenomena occur within a pre-existing field structure rather than redefining it.
+      </p>
+      
+      <p>
+      This influence should be understood as <em>regime selection</em>, not structural governance.
+      </p>
+      
+      <h3>Clarifying Principle</h3>
+      
+      <blockquote>
+        Field structure governs admissibility of evolution;
+        constitutive structure governs material response within that evolution.
+      </blockquote>
+      
+      <p>
+      Maintaining this directional hierarchy preserves generality, stability, and transferability.
+      Reversing it is a common source of modeling pathologies.
+      </p>
       
       <h2>4. Why Simplification Preserves Predictive Power</h2>
       <p>
